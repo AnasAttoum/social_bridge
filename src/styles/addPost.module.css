@@ -1,5 +1,5 @@
 .card{
-    width: 60vw;
+    width: 40vw;
     background-color: white;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
 }
@@ -8,7 +8,7 @@
     color: var(--primary);
     border: 1px solid #aaa;
     border-radius: 10px;
-    width: 50vw;
+    width: 30vw;
     padding: 10px;
 }
 
@@ -22,36 +22,63 @@
     border-radius: 10px;
 }
 
-@media (width<850px) {
+@media (width<1200px) {
     .input{
-        width: 40vw;
+        width: 25vw;
     }
     .icons>div>div{
         display: none;
     }
 }
 
-@media (width<700px) {
+@media (width<800px) {
     .card{
-        width: 95vw;
+        margin-left: 10px;
+        width: 40vw;
     }
     .input{
-        width: 80vw;
-    }
-}
-
-@media (width<700px) {
-    .input{
-        width: 60vw;
+        width: 25vw;
     }
     .icons{
         gap: 5px;
     }
 }
 
-@media (width<300px) {
+@media (width<813px) {
+    .btn{
+        font-size: 13px;
+    }
+}
+
+@media (width<700px) {
+    .card{
+        width: 90vw ;
+    }
+    .input{
+        width: 70vw;
+    }
+}
+
+@media (width<500px) {
+    .input{
+        width: 100%;
+    }
+}
+@media (width<350px) {
+    .card{
+        gap: 0;
+    }
+    .input{
+        width: 70%;
+    }
     .icons{
-        flex-direction: column;
-        justify-content: center;
+       gap: 0;
+    }
+    .icons>div>svg{
+        width: 1em;
+        height: 1em;
+    }
+    .btn{
+        padding: 10px;
     }
 }

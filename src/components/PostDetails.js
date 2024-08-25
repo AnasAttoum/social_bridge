@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import BackgroundLetterAvatars from '../components/BackgroundLetterAvatars'
+import BackgroundLetterAvatars from './BackgroundLetterAvatars'
 
 import styles from '../styles/postDetails.module.css'
-import { useParams } from 'react-router-dom'
 import { getComments, getPost } from '../api/posts'
 import { getUser } from '../api/users'
-import Comments from '../components/Comments'
+import Comments from './Comments'
 
-export default function PostDetails() {
+export default function PostDetails({postId}) {
 
     const [post, setPost] = useState({})
     const [user, setUser] = useState(null)
@@ -15,7 +14,6 @@ export default function PostDetails() {
     const [comments, setComments] = useState([])
     const [buttons, setButtons] = useState({ like: false, save: false })
 
-    const { postId } = useParams()
 
     useEffect(() => {
         (async () => {
@@ -28,7 +26,8 @@ export default function PostDetails() {
 
 
     return (
-        <div className='flex flex-col justify-center items-center mt-10' style={{ minHeight: '70vh' }}>
+        <div className='flex flex-col justify-center items-center mt-10 me-5'>
+            <div className='my-5' style={{color:'var(--primary)',fontWeight:'700',fontSize:'20px'}}>Product Details</div>
             <div className={`p-5 pb-1 rounded-lg ${styles.card}`}>
                 {user && <div className='flex gap-5 items-center mb-5'>
                     <BackgroundLetterAvatars name={user.name} />

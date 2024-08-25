@@ -26,7 +26,7 @@ export default function AddPost() {
                                 <div>Poll</div>
                             </div>
                         </div>
-                        <div className='flex items-center px-5' style={{ backgroundColor: 'var(--primary)', color: 'white', cursor: 'pointer', borderRadius: '10px' }}>Post</div>
+                        <div className={`flex items-center px-5 ${styles.btn}`} style={{ backgroundColor: 'var(--primary)', color: 'white', cursor: 'pointer', borderRadius: '10px' }}>Post</div>
                     </div>
                 </div>
             </div>

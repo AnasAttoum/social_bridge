@@ -25,7 +25,7 @@
     background-color: #0f0;
 }
 
-@media (width<700px) {
+@media (width<800px) {
     .sideBar{
         display: none;
     }

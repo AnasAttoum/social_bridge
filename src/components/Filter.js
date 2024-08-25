@@ -4,13 +4,15 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import styles from '../styles/posts.module.css'
+
 export default function Filter({ChangeOnFilter,postsMemo}) {
 
 const [filter,setFilter]=React.useState('')
 
     return (
         <div className='flex justify-center'>
-            <div className='flex justify-between items-center' style={{ width: '60vw' }}>
+            <div className={`flex justify-between items-center ${styles.filter}`} style={{ width: '40vw' }}>
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                     <InputLabel id="demo-select-small-label"
                         sx={{ color: 'var(--primary)',

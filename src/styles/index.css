@@ -4,8 +4,8 @@
 
 
 :root {
-    --primary: #ef4444;
-    --secondary: #ee5555;
+    --primary: #c1121f;
+    --secondary: rgb(243, 109, 109);
 }
 
 body {

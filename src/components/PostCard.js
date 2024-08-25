@@ -2,12 +2,12 @@ import React, { memo, useEffect, useState } from 'react'
 
 import styles from '../styles/postCard.module.css'
 import BackgroundLetterAvatars from './BackgroundLetterAvatars'
-import { Link } from 'react-router-dom'
 
-function PostCard({ post, users }) {
+function PostCard({ post, users,setSelectedCard }) {
 
     const [user, setUser] = useState(null)
     const [buttons, setButtons] = useState({ like: false, save: false })
+    
 
     useEffect(() => {
         setUser(users.find((user) => { return user.id === post.userId }))
@@ -45,9 +45,9 @@ function PostCard({ post, users }) {
                     <div style={buttons.save ? { color: 'var(--primary)', transition: 'all .3s' } : { transition: 'all .3s' }}>Save</div>
                 </div>
 
-                <Link to={`/posts/${post.id}`} className={`${styles.viewPostIcon} flex justify-center items-center gap-5 p-2 rounded-md`}>
+                <div className={`${styles.viewPostIcon} flex justify-center items-center gap-5 p-2 rounded-md`} onClick={()=>setSelectedCard(post.id)}>
                         View Post
-                </Link>
+                </div>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 .card{
-    width: 60vw;
+    width: 40vw;
     background-color: white;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
 }
@@ -34,14 +34,16 @@
     background-color: var(--secondary);
 }
 
-@media (width<700px) {
-    .card{
-        width: 95vw;
+@media (width<813px) {
+    .icons>div,.viewPostIcon{
+        font-size: 10px;
     }
 }
 
-@media (width<350px) {
-    .icons>div,.viewPostIcon{
-        font-size: 10px;
+@media (width<700px) {
+    .card{
+        width: 90vw;
+        background-color: white;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
     }
 }
