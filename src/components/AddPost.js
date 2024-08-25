@@ -5,7 +5,7 @@ import BackgroundLetterAvatars from './BackgroundLetterAvatars'
 export default function AddPost() {
     return (
         <div className='flex justify-center my-16'>
-            <div className={`flex gap-5 p-5 ${styles.card}`}>
+            <div className={`flex gap-5 p-5 rounded-lg ${styles.card}`}>
 
                 <BackgroundLetterAvatars name={'Anas Attoum'} />
 
