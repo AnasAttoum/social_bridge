@@ -1,0 +1,17 @@
+.header{
+    color: white;
+    background-color: var(--primary);
+}
+
+.footer{
+    text-align: center;
+    padding: 50px;
+    background-color: var(--primary);
+    color: white;
+}
+
+@media (width<400px) {
+    .logo{
+        display: none;
+    }
+}

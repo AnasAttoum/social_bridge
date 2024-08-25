@@ -1,0 +1,32 @@
+.sideBar{
+    position: relative;
+    left: 0;
+    /* border-right: 1px solid var(--secondary); */
+}
+
+.sideBar>div:first-child{
+    text-align: center;
+    color: var(--primary);
+}
+
+.card{
+    cursor: pointer;
+}
+
+.card:nth-child(even){
+    background-color: #ddd;
+}
+
+
+.card>div:last-child{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #0f0;
+}
+
+@media (width<700px) {
+    .sideBar{
+        display: none;
+    }
+}

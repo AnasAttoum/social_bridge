@@ -1,0 +1,41 @@
+.card{
+    width: 60vw;
+    background-color: white;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.website{
+    color: gray;
+    font-size: 12px;
+}
+
+.body{
+    color: #444;
+}
+
+.icons>div{
+    border: 1px solid #ddd;
+    cursor: pointer;
+    width: 40%;
+}
+
+.commentsNum{
+    color: white;
+    background-color: var(--primary);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+
+@media (width<700px) {
+    .card{
+        width: 95vw;
+    }
+}
+
+@media (width<350px) {
+    .icons>div,.viewPostIcon{
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,47 @@
+.card{
+    width: 60vw;
+    background-color: white;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.website{
+    color: gray;
+    font-size: 12px;
+}
+
+.body{
+    color: #444;
+    display: -webkit-box;
+    line-clamp:1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.icons>div,.viewPostIcon{
+    border: 1px solid #ddd;
+    cursor: pointer;
+    width: 30%;
+}
+
+.icons>.viewPostIcon{
+    color: white;
+    background-color: var(--primary);
+    transition: all .3s;
+}
+
+.icons>.viewPostIcon:hover{
+    background-color: var(--secondary);
+}
+
+@media (width<700px) {
+    .card{
+        width: 95vw;
+    }
+}
+
+@media (width<350px) {
+    .icons>div,.viewPostIcon{
+        font-size: 10px;
+    }
+}

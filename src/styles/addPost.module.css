@@ -1,0 +1,57 @@
+.card{
+    width: 60vw;
+    background-color: white;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.input{
+    color: var(--primary);
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    width: 50vw;
+    padding: 10px;
+}
+
+.input:focus{
+    outline: none;
+}
+
+.icons>div{
+    border: 1px solid #aaa;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+@media (width<850px) {
+    .input{
+        width: 40vw;
+    }
+    .icons>div>div{
+        display: none;
+    }
+}
+
+@media (width<700px) {
+    .card{
+        width: 95vw;
+    }
+    .input{
+        width: 80vw;
+    }
+}
+
+@media (width<700px) {
+    .input{
+        width: 60vw;
+    }
+    .icons{
+        gap: 5px;
+    }
+}
+
+@media (width<300px) {
+    .icons{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
