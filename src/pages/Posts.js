@@ -63,7 +63,7 @@ export default function Posts() {
     }, [allPosts])
 
     return (
-        <div className={`flex justify-between gap-5 ${styles.container}`}>
+        <div className={`flex justify-between gap-5 ${styles.container}`} style={{minHeight:'75vh'}}>
             <SideBar users={users} />
 
             <div className={styles.mid} style={{ width: '60vw' }}>
@@ -82,7 +82,6 @@ export default function Posts() {
 
             <div>
                 {selectedCard !== 0 && <Suspense fallback={<Spinner/>}><LazyPostDetails postId={selectedCard} /></Suspense>}
-
             </div>
         </div>
     )
