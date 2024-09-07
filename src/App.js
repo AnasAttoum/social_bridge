@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import Spinner from './components/Spinner';
 import Header from './components/Header';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 const LazyPosts = lazy(() => import('./pages/Posts'))
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='' element={<Header />}>
           <Route index element={<Home />} />
           <Route path='posts' element={<Suspense fallback={<Spinner />}><LazyPosts /></Suspense>} />
+          <Route path='profile' element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

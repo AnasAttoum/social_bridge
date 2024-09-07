@@ -1,0 +1,36 @@
+.logo{
+    animation: logo 20s infinite linear ;
+}
+
+@keyframes logo {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@media (width<700px) {
+    .container{
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px;
+    }
+    .container>div{
+        width: 95vw !important;
+        height: 50vh;
+        overflow: scroll;
+        background-color: #ccc;
+        border: 1px dashed #555;
+        border-radius: 20px;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (width<400px) {
+    .logo{
+        width: 50vw;
+        height: 50vw;
+    }
+}

@@ -8,6 +8,7 @@ export default function Header() {
     const links = [
         { url: '/', name: 'Home' },
         { url: '/posts', name: 'Posts' },
+        { url: '/profile', name: 'Profile' },
     ]
 
     let location = useLocation()
