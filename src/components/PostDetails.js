@@ -23,11 +23,11 @@ export default function PostDetails({ postId }) {
     const isSaved = useSelector(state => state.reducers.save).some((id) => { return id === post.id })
 
     useEffect(() => {
-        (async () => {
-            dispatch(addPost(postId))
+        dispatch(addPost(postId))
+        if (post) {
             dispatch(addUser(post.userId))
             dispatch(addComments(post.id))
-        })()
+        }
 
     }, [postId, post, dispatch])
 
@@ -43,8 +43,8 @@ export default function PostDetails({ postId }) {
                         <div className={styles.website}>{user.website}</div>
                     </div>
                 </div>}
-                <div className='my-5'>{post.title}</div>
-                <div className={styles.body}>{post.body}</div>
+                <div className='my-5'>{post ? post.title : null}</div>
+                <div className={styles.body}>{post ? post.body : null}</div>
 
                 <div className={`flex justify-evenly mt-5 ${styles.icons}`}>
 
