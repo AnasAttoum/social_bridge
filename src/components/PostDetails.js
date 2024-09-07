@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import BackgroundLetterAvatars from './BackgroundLetterAvatars'
 
 import styles from '../styles/postDetails.module.css'
-import { getComments, getPost } from '../api/posts'
-import { getUser } from '../api/users'
 import Comments from './Comments'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleLike, toggleSave } from '../Reducers/actions'
+import { toggleLike } from '../Reducers/slices/likeSlice'
+import { toggleSave } from '../Reducers/slices/saveSlice'
+import { addComments } from '../Reducers/slices/commentSlice'
+import { addUser } from '../Reducers/slices/userSlice'
+import { addPost } from '../Reducers/slices/postSlice'
 
 export default function PostDetails({ postId }) {
 
-    const [post, setPost] = useState({})
-    const [user, setUser] = useState(null)
+    const { user } = useSelector(state => state.reducers.user)
+    const { post } = useSelector(state => state.reducers.post)
 
-    const [comments, setComments] = useState([])
+    const comments = useSelector(state => state.reducers.comment)
 
     const dispatch = useDispatch()
 
-    const isLiked = useSelector(state => state.LikedPosts).some((id) => { return id === post.id })
-    const isSaved = useSelector(state => state.SavedPosts).some((id) => { return id === post.id })
+    const isLiked = useSelector(state => state.reducers.like).some((id) => { return id === post.id })
+    const isSaved = useSelector(state => state.reducers.save).some((id) => { return id === post.id })
 
     useEffect(() => {
         (async () => {
-            const postResponse = await getPost(postId)
-            setPost(postResponse)
-            setUser(await getUser(postResponse.userId))
-            setComments(await getComments(postResponse.id))
+            dispatch(addPost(postId))
+            dispatch(addUser(post.userId))
+            dispatch(addComments(post.id))
         })()
-    }, [postId])
+
+    }, [postId, post, dispatch])
 
 
     return (

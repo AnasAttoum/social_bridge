@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addPosts, addUsers } from '../Reducers/actions'
-import { getPosts } from '../api/posts'
-import { getUsers } from '../api/users'
 
 import styles from '../styles/profile.module.css'
 import PostCard from '../components/PostCard'
+import { addUsers } from '../Reducers/slices/userSlice'
+import { addPosts } from '../Reducers/slices/postSlice'
 
 export default function Profile() {
-    const allPosts = useSelector(state => state.Posts)
-    const users = useSelector(state => state.Users)
-    const likes = useSelector(state => state.LikedPosts)
-    const saves = useSelector(state => state.SavedPosts)
+    const { posts: allPosts } = useSelector(state => state.reducers.post)
+    const { users } = useSelector(state => state.reducers.user)
+    const likes = useSelector(state => state.reducers.like)
+    const saves = useSelector(state => state.reducers.save)
     const dispatch = useDispatch()
 
     useEffect(() => {
         (async () => {
-            dispatch(addPosts(await getPosts()))
+            dispatch(addPosts())
         })();
 
         (async () => {
-            dispatch(addUsers(await getUsers()))
+            dispatch(addUsers())
         })();
         // eslint-disable-next-line
     }, [])

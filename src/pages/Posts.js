@@ -1,7 +1,5 @@
 import React, { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPosts } from '../api/posts'
-import { getUsers } from '../api/users'
 import PostCard from '../components/PostCard'
 import BasicPagination from '../components/BasicPagination'
 import AddPost from '../components/AddPost'
@@ -10,16 +8,17 @@ import SideBar from '../components/SideBar'
 
 import styles from '../styles/posts.module.css'
 import Spinner from '../components/Spinner'
-import { addPosts, addUsers } from '../Reducers/actions'
+import { addUsers } from '../Reducers/slices/userSlice'
+import { addPosts } from '../Reducers/slices/postSlice'
 
 const LazyPostDetails = lazy(() => import('../components/PostDetails'))
 
 export default function Posts() {
 
-    const allPosts = useSelector(state => state.Posts)
-    const users = useSelector(state => state.Users)
-    const likes = useSelector(state => state.LikedPosts)
-    const saves = useSelector(state => state.SavedPosts)
+    const {posts:allPosts} = useSelector(state => state.reducers.post)
+    const { users } = useSelector(state => state.reducers.user)
+    const likes = useSelector(state => state.reducers.like)
+    const saves = useSelector(state => state.reducers.save)
     const dispatch = useDispatch()
 
     const [posts, setPosts] = useState([])
@@ -30,14 +29,9 @@ export default function Posts() {
 
 
     useEffect(() => {
-        (async () => {
-            dispatch(addPosts(await getPosts()))
-            setPosts(allPosts.toReversed().slice(0, 5))
-        })();
-
-        (async () => {
-            dispatch(addUsers(await getUsers()))
-        })();
+        dispatch(addPosts())
+        dispatch(addUsers())
+        setPosts(allPosts.toReversed().slice(0, 5))
         // eslint-disable-next-line
     }, [])
 
@@ -78,15 +72,27 @@ export default function Posts() {
                 <Filter ChangeOnFilter={ChangeOnFilter} postsMemo={postsMemo} />
 
                 <div className='flex flex-col flex-wrap items-center justify-center gap-5 mt-10' style={{ minHeight: '70vh' }}>
-                    {posts.map((post, index) => {
-                        return <PostCard
-                            key={index}
-                            post={post}
-                            users={users}
-                            isLiked={likes.some((id) => { return id === post.id })}
-                            isSaved={saves.some((id) => { return id === post.id })}
-                            setSelectedCard={setSelectedCard} />
-                    })}
+                    {posts.length === 0 ?
+                        allPosts.toReversed().slice(0, 5).map((post, index) => {
+                            return <PostCard
+                                key={index}
+                                post={post}
+                                users={users}
+                                isLiked={likes.some((id) => { return id === post.id })}
+                                isSaved={saves.some((id) => { return id === post.id })}
+                                setSelectedCard={setSelectedCard} />
+                        })
+                        :
+                        posts.map((post, index) => {
+                            return <PostCard
+                                key={index}
+                                post={post}
+                                users={users}
+                                isLiked={likes.some((id) => { return id === post.id })}
+                                isSaved={saves.some((id) => { return id === post.id })}
+                                setSelectedCard={setSelectedCard} />
+                        })
+                    }
                 </div>
                 <BasicPagination length={allPosts.length / 5} changeOnPagination={changeOnPagination} />
 

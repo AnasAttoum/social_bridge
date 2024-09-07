@@ -3,7 +3,8 @@ import React, { memo, useEffect, useState } from 'react'
 import styles from '../styles/postCard.module.css'
 import BackgroundLetterAvatars from './BackgroundLetterAvatars'
 import { useDispatch } from 'react-redux'
-import { toggleLike, toggleSave } from '../Reducers/actions'
+import { toggleLike } from '../Reducers/slices/likeSlice'
+import { toggleSave } from '../Reducers/slices/saveSlice'
 
 function PostCard({ post, users, isLiked, isSaved, setSelectedCard, view = true }) {
 
